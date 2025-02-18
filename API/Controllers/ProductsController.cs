@@ -9,13 +9,12 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController(IGenericRepository<Product> productRepo) : ControllerBase
+    public class ProductsController(IGenericRepository<Product> productRepo) : BaseApiController
     {
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyCollection<Product>>> GetProducts(string? brand,
-        string? type, string? sort)
+        public async Task<ActionResult<IReadOnlyCollection<Product>>> GetProducts([FromQuery] ProductSpecParams specParams)
         {
-            var spec = new ProductSpecification(brand, type, sort);
+            var spec = new ProductSpecification(specParams);
 
             var products = await productRepo.ListAsync(spec);
 
