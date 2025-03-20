@@ -16,9 +16,7 @@ namespace API.Controllers
         {
             var spec = new ProductSpecification(specParams);
 
-            var products = await productRepo.ListAsync(spec);
-
-            return Ok(products);
+            return await CreatePagedResult(productRepo, spec, specParams.PageIndex, specParams.PageSize);
         }
         [HttpGet("{id:int}")] // api/products/2
         public async Task<ActionResult<Product>> GetProduct(int id)

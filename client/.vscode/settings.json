@@ -1,0 +1,4 @@
+{
+    "typescript.tsserver.watchOptions": {},
+    "eslint.codeActionsOnSave.rules": null
+}
