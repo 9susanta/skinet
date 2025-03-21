@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ShopService } from '../../../core/service/shop.service';
+import { ShopService } from '../../../core/services/shop.service';
 import { Product } from '../../../shared/models/product';
 import { CurrencyPipe } from '@angular/common';
 import { MatButton } from '@angular/material/button';
