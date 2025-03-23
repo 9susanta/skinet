@@ -1,17 +1,14 @@
 ﻿using Core.Entities;
 using Infrastructure.Config;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Data
 {
-    public class StoreContext:DbContext
+    public class StoreContext(DbContextOptions dbContextOptions) : IdentityDbContext<AppUser>(dbContextOptions)
     {
-        public StoreContext(DbContextOptions dbContextOptions) : base(dbContextOptions) { }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Address> Addresses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -19,8 +16,5 @@ namespace Infrastructure.Data
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ProductConfiguration).Assembly);
         }
-
-        public DbSet<Product> Products { get; set; }
-        
     }
 }
