@@ -6,7 +6,7 @@ services:
       MSSQL_SA_PASSWORD: "Password@1"
     ports:
       - "1433:1433"
-    volume:
+    volumes:
       - sql-data:/var/opt/mssql
   redies:
     image: redis:latest
