@@ -6,9 +6,7 @@ using System.Security.Claims;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class BuggyController : ControllerBase
+    public class BuggyController : BaseApiController
     {
         [HttpGet("unauthorized")]
         public IActionResult GetUnauthorized()
