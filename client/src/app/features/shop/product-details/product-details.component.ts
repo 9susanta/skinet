@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ShopService } from '../../../core/services/shop.service';
 import { Product } from '../../../shared/models/product';
@@ -25,7 +25,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.scss'
 })
-export class ProductDetailsComponent {
+export class ProductDetailsComponent implements OnInit {
   private shopService = inject(ShopService);
    private activatedRoute = inject(ActivatedRoute);
    private cartService = inject(CartService);

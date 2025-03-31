@@ -1,4 +1,4 @@
-import { Component, inject, output } from '@angular/core';
+import { Component, OnInit, inject, output } from '@angular/core';
 import { CartService } from '../../../core/services/cart.service';
 import { CheckoutService } from '../../../core/services/checkout.service';
 import { DeliveryMethod } from '../../../shared/models/deliveryMethod';
@@ -14,7 +14,7 @@ import {MatRadioModule} from '@angular/material/radio';
   templateUrl: './checkout-delivery.component.html',
   styleUrl: './checkout-delivery.component.scss'
 })
-export class CheckoutDeliveryComponent {
+export class CheckoutDeliveryComponent implements OnInit {
   checkoutService = inject(CheckoutService);
   cartService = inject(CartService);
   deliveryComplete = output<boolean>();
