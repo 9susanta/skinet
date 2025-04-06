@@ -10,8 +10,9 @@ import { lastValueFrom } from 'rxjs';
 import { InitService } from './core/services/init.service';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 
-function initializeApp(initService: InitService) {
-  return () => lastValueFrom(initService.init()).finally(() => {
+function initializeApp() {
+  let initService=inject(InitService);
+  return lastValueFrom(initService.init()).finally(() => {
     const splash = document.getElementById('initial-splash');
     if (splash) {
       splash.remove();
@@ -24,6 +25,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([errorInterceptor, loadingInterceptor,authInterceptor])),
-    provideAppInitializer(initializeApp(inject(InitService)))
+    provideAppInitializer(initializeApp)
   ]
 };

@@ -132,7 +132,7 @@ export class CheckoutComponent implements OnInit, OnDestroy {
             throw new Error('Order creation failed');
           } 
         }
-        if (result.error) {
+        else if (result.error) {
           throw new Error(result.error.message);
         } else {
           throw new Error('Something went wrong');
